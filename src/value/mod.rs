@@ -159,7 +159,7 @@ impl serde::ser::Serialize for Value {
             Self::Bytes(ref v) => v.serialize(s),
 
             Self::Sequence(ref v) => v.serialize(s),
-            Self::Map(ref v) => v.serialize(s),
+            Self::Map(ref v) => ::toml::ser::tables_last(v, s),
         }
     }
 }
